@@ -11,7 +11,7 @@ const app = express();
 app.use("/api", logRoute);
 
 app.get("/", (req, res) => {
-  res.send("Rain Logger API Running");
+  res.send("Rain Logger API Running \n Add Queury Perameters");
 });
 
 const PORT = process.env.PORT || 5000;
