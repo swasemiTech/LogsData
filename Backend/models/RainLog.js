@@ -17,7 +17,7 @@ const rainLogSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  temperature: {
+  Volt: {
     type: Number,
     required: true
   },

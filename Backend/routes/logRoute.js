@@ -7,9 +7,9 @@ const router = express.Router();
 
 router.get("/log", async (req, res) => {
   try {
-    const { id, Date, Time, Rain, Temp } = req.query;
+    const { id, Date, Time, Rain, Volt } = req.query;
 
-    if (!id || !Date || !Time || !Rain || !Temp) {
+    if (!id || !Date || !Time || !Rain || !Volt) {
       return res.status(400).json({ status: "ERROR", message: "Missing parameters" });
     }
 
@@ -18,7 +18,7 @@ router.get("/log", async (req, res) => {
       date: Date,
       time: Time,
       rainFall: Number(Rain),
-      temperature: Number(Temp)
+      Volt: Number(Volt)
     });
 
     return res.json({ status: "OK" });
