@@ -2,6 +2,9 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import logRoute from "./routes/logRoute.js";
+import fs from 'fs';
+import https from 'https'
+
 
 dotenv.config();
 connectDB();
@@ -39,7 +42,12 @@ app.get("/", (req, res) => {
   res.send("Rain Logger API Running");
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+const options = {
+  key: fs.readFileSync('../localhost-key.pem'),
+  cert: fs.readFileSync('../localhost.pem'),
+};
+
+
+https.createServer(options, app).listen(5050, () => {
+  console.log("https server running at https://localhost:5050")
+})
